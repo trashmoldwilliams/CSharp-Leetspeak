@@ -23,6 +23,8 @@ namespace LeetSpeakNS.Objects
       tests.Add('T', '7');
       tests.Add('s', 'z');
       tests.Add('S', 'Z');
+      tests.Add('g', '9');
+      tests.Add('G', '9');
       for (var i = 0; i < array.Length; i++)
       {
         foreach( KeyValuePair<char,char> test in tests )
