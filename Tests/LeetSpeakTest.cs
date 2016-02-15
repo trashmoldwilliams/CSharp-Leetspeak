@@ -40,8 +40,8 @@ namespace LeetSpeakNS
       [Fact]
       public void Translate_ForLetterS_ReplaceWithZKeepCase()
       {
-        Assert.Equal("az", LeetSpeak.Translate("as"));
-        Assert.Equal("aZ", LeetSpeak.Translate("aS"));
+        Assert.Equal("Sz", LeetSpeak.Translate("Ss"));
+        Assert.Equal("sZ", LeetSpeak.Translate("sS"));
       }
 
       // the letter g should be replaced by 9
@@ -52,7 +52,34 @@ namespace LeetSpeakNS
         Assert.Equal("9", LeetSpeak.Translate("G"));
       }
 
+      //Lowercase l to 1
+      [Fact]
+      public void Translate_ForLowerI_ReplaceWith1()
+      {
+        Assert.Equal("1", LeetSpeak.Translate("l"));
+      }
+
+      //Translates 'leet' to '1337'
+      [Fact]
+      public void Translate_WordLeet_Say1337()
+      {
+        Assert.Equal("1337", LeetSpeak.Translate("leet"));
+      }
+
+      //Translate 'this is leet speak' to '7hiz iz 1337 sp3ak'
+      [Fact]
+      public void Translate_Phrase_ToLeet()
+      {
+        Assert.Equal("7hiz iz 1337 zp3ak", LeetSpeak.Translate("this is leet speak"));
+      }
+
       // words in quotes should be ignored
+      [Fact]
+      public void Translate_Phrase_ToLeetIgnoreQuotes()
+      {
+        Assert.Equal("7hiz iz 'leet' zp3ak", LeetSpeak.Translate("this is 'leet' speak"));
+      }
+
     /**/
 
     /*
