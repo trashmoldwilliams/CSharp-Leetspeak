@@ -27,7 +27,14 @@ namespace LeetSpeakNS
       {
         Assert.Equal("1", LeetSpeak.Translate("I"));
       }
+
       // The letter t should be replaced with 7
+      [Fact]
+      public void Translate_ForLetterT_ReplaceWith7()
+      {
+        Assert.Equal("7", LeetSpeak.Translate("t"));
+        Assert.Equal("7", LeetSpeak.Translate("T"));
+      }
       // words in quotes should be ignored
       // the letter s should be replaced with z, keeping case, unless at the front of the word
       // the letter g should be replaced by 9
