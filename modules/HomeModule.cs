@@ -9,7 +9,10 @@ namespace LeetSpeakNS
     public HomeModule()
     {
       Get["/"] = _ => {
-        return View["header.cshtml"];
+        return View["translate.cshtml", ""];
+      };
+      Post["/leetspeak"] = _ => {
+        return View["translate.cshtml", LeetSpeak.Translate(Request.Form["english"])];
       };
     }
   }

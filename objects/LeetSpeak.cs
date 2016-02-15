@@ -12,6 +12,7 @@ namespace LeetSpeakNS.Objects
 
     public static string Translate(string english)
     {
+      bool ignore = false;
       char[] array = english.ToCharArray();
       Dictionary<char, char> tests = new Dictionary<char, char> {};
       tests.Add('e', '3');
@@ -26,30 +27,31 @@ namespace LeetSpeakNS.Objects
       tests.Add('g', '9');
       tests.Add('G', '9');
       tests.Add('l', '1');
+
       for (var i = 0; i < array.Length; i++)
       {
-        foreach( KeyValuePair<char,char> test in tests )
+        if( array[i] == '\'' )
         {
-          if( Char.ToLower(test.Key) != 's' || i > 0 )
+          if(ignore) ignore = false;
+          else ignore = true;
+        } else if(!ignore) {
+
+          foreach( KeyValuePair<char,char> test in tests )
           {
-            if( array[i] == test.Key)
+            if( (Char.ToLower(test.Key) != 's' || i > 0) )
             {
-              array[i] = test.Value;
-            }
-          }
-        }
-        /*
-        if ( Char.ToLower(array[i]) == 'e' )
-        {
-          array[i] = '3';
-        } else if( Char.ToLower(array[i]) == 'o' )
-        {
-          array[i] = '0';
-        } /**/
-      }
+              if( array[i] == test.Key)
+              {
+                array[i] = test.Value;
+              } // end if array test
+            } // end if first character s
+          } // end foreach
+        } // end if ignore
+        /**/
+      } // end for loop
       string result = string.Join("", array);
       return result;
-    }
+    } // end Translate method
 
-  }
-}
+  } // end class
+} // end namespace

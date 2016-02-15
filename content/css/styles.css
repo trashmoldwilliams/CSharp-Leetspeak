@@ -12,7 +12,7 @@ label {
 input {
   width:70%;
 }
-input[type=submit] {
+[type=submit] {
   width:100%;
 }
 
