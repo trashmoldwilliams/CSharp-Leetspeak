@@ -21,13 +21,18 @@ namespace LeetSpeakNS.Objects
       tests.Add('I', '1');
       tests.Add('t', '7');
       tests.Add('T', '7');
+      tests.Add('s', 'z');
+      tests.Add('S', 'Z');
       for (var i = 0; i < array.Length; i++)
       {
         foreach( KeyValuePair<char,char> test in tests )
         {
-          if( array[i] == test.Key)
+          if( Char.ToLower(test.Key) != 's' || i > 0 )
           {
-            array[i] = test.Value;
+            if( array[i] == test.Key)
+            {
+              array[i] = test.Value;
+            }
           }
         }
         /*

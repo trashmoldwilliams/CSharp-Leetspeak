@@ -35,9 +35,18 @@ namespace LeetSpeakNS
         Assert.Equal("7", LeetSpeak.Translate("t"));
         Assert.Equal("7", LeetSpeak.Translate("T"));
       }
-      // words in quotes should be ignored
+
+      [Fact]
+      public void Translate_ForLetterS_ReplaceWithZKeepCase()
+      {
+        Assert.Equal("az", LeetSpeak.Translate("as"));
+        Assert.Equal("aZ", LeetSpeak.Translate("aS"));
+      }
+
       // the letter s should be replaced with z, keeping case, unless at the front of the word
       // the letter g should be replaced by 9
+
+      // words in quotes should be ignored
     /**/
 
     /*
